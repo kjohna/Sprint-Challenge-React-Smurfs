@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from './api.js';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 import './App.css';
 import SmurfForm from './components/SmurfForm';
@@ -68,13 +69,33 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navbar color="primary" style={{color: 'white'}} light expand="md">
+          <NavbarBrand>
+            Smurf Village
+          </NavbarBrand>
+          <Nav tabs className="ml-auto" navbar>
+            <NavItem>
+              <NavLink 
+                tag={Link} 
+                exact 
+                to="/" 
+                style={{color: 'white'}}
+              >
+                Home
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink 
+                tag={Link} 
+                to="/smurf-form"
+                style={{color: 'white'}}
+              >
+                Add Smurf
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Navbar>
         <nav>
-          <NavLink exact to="/">
-            Home
-          </NavLink>
-          <NavLink to="/smurf-form">
-            Add Smurf
-          </NavLink>
         </nav>
         <Route 
           path="/smurf-form"

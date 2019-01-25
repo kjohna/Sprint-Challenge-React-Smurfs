@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import { Container } from 'reactstrap';
 
 import Smurf from './Smurf';
 
 class Smurfs extends Component {
   render() {
     return (
-      <div className="Smurfs">
+      <div>
         <h1>Smurf Village</h1>
-        <ul>
+        <Container className="Smurfs">
           {this.props.smurfs.map(smurf => {
             return (
               <Smurf
@@ -19,7 +20,7 @@ class Smurfs extends Component {
               />
             );
           })}
-        </ul>
+        </Container>
       </div>
     );
   }
