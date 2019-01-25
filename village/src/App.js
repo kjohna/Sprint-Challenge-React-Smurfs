@@ -59,6 +59,20 @@ class App extends Component {
           ...this.state.smurfs,
           smurfs: res.data,
           newSmurf: emptySmurf
+        });
+        this.props.history.push('/');
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  deleteSmurf = (e, smurfId) =>{
+    console.log("delete smurf ", smurfId);
+    API.delete(`/${smurfId}`)
+      .then(res => {
+        this.setState({
+          smurfs: res.data
         })
       })
       .catch(err => {
@@ -108,7 +122,10 @@ class App extends Component {
         <Route 
           path="/"
           exact
-          render={(props) => <Smurfs {...props} smurfs={this.state.smurfs} />}
+          render={(props) => <Smurfs {...props} 
+            smurfs={this.state.smurfs} 
+            deleteSmurf={this.deleteSmurf}  
+          />}
         />
       </div>
     );
